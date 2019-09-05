@@ -54,8 +54,12 @@ export const ProductList = styled.ul`
         background: rgba(0, 0, 0, 0.1);
       }
       svg {
-        align-items: center;
-        max-width: 250px;
+        margin-right: 5px;
+      }
+      span {
+        flex: 1;
+        text-align: center;
+        font-weight: bold;
       }
     }
   }
