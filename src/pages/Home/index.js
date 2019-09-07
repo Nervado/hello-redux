@@ -27,14 +27,16 @@ class Home extends Component {
     this.setState({ products: data });
   }
 
-  handleAddProduct = product => {
-    const { addToCart } = this.props;
+  handleAddProduct = id => {
+    // eslint-disable-next-line react/prop-types
+    const { addToCartRequest } = this.props;
 
-    addToCart(product);
+    addToCartRequest(id);
   };
 
   render() {
     const { products } = this.state;
+    // eslint-disable-next-line react/prop-types
     const { ammount } = this.props;
 
     return (
@@ -46,10 +48,10 @@ class Home extends Component {
             <span>{product.priceFormmatted}</span>
             <button
               type="button"
-              onClick={() => this.handleAddProduct(product)}
+              onClick={() => this.handleAddProduct(product.id)}
             >
               <div>
-                <MdAddShoppingCart size={16} color="#FFF" />{' '} 
+                <MdAddShoppingCart size={16} color="#FFF" />{' '}
                 {ammount[product.id] || 0}
               </div>
               <span>ADICIONAR AO CARRINHO</span>
@@ -62,10 +64,10 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  ammount: state.cart.reduce((ammount, product)=>{
+  ammount: state.cart.reduce((ammount, product) => {
     ammount[product.id] = product.ammount;
-    return ammount; 
-  }, {})
+    return ammount;
+  }, {}),
 });
 
 const mapDispatchToProps = dispatch =>

@@ -8,6 +8,7 @@ import { Container, Cart } from './styles';
 
 import logo from '../../assets/images/logo.svg';
 
+// eslint-disable-next-line react/prop-types
 function Header({ cartSize }) {
   return (
     <Container>
